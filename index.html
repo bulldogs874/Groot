@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GROOT BOOSTING</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    background:
+    radial-gradient(circle at top left,#00ff9925,transparent 30%),
+    radial-gradient(circle at bottom right,#00ffd525,transparent 30%),
+    linear-gradient(135deg,#02140d,#041d14,#07261b,#03110b);
+    color:white;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#00ff9950;
+    border-radius:50%;
+    filter:blur(150px);
+    top:-200px;
+    left:-200px;
+    animation:float1 8s infinite alternate;
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#00ffd550;
+    border-radius:50%;
+    filter:blur(150px);
+    bottom:-200px;
+    right:-200px;
+    animation:float2 8s infinite alternate;
+    z-index:-2;
+}
+
+@keyframes float1{
+    from{transform:translateY(0);}
+    to{transform:translateY(40px);}
+}
+
+@keyframes float2{
+    from{transform:translateY(0);}
+    to{transform:translateY(-40px);}
+}
+
+.container{
+    width:100%;
+    max-width:430px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(25px);
+    border-radius:35px;
+    padding:90px 22px 22px;
+    box-shadow:
+    0 0 40px rgba(0,255,120,0.2),
+    inset 0 0 20px rgba(255,255,255,0.03);
+    position:relative;
+    overflow:hidden;
+}
+
+.fund-box{
+    position:absolute;
+    top:20px;
+    right:20px;
+    z-index:999;
+    background:rgba(0,255,120,0.12);
+    border:1px solid rgba(0,255,120,0.3);
+    border-radius:18px;
+    padding:12px 18px;
+    backdrop-filter:blur(15px);
+    box-shadow:0 0 20px rgba(0,255,120,0.2);
+}
+
+.fund-title{
+    font-size:11px;
+    color:#a6ffd2;
+    margin-bottom:6px;
+}
+
+.fund-input{
+    width:120px;
+    padding:10px;
+    border:none;
+    outline:none;
+    border-radius:14px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.1);
+    color:#00ff99;
+    font-size:18px;
+    font-weight:700;
+    text-align:center;
+}
+
+.header-box{
+    position:relative;
+    border-radius:30px;
+    overflow:hidden;
+    padding:35px 20px;
+    text-align:center;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    margin-bottom:25px;
+}
+
+.header-box::before{
+    content:"";
+    position:absolute;
+    width:200%;
+    height:200%;
+    background:
+    conic-gradient(
+    transparent,
+    rgba(0,255,120,0.2),
+    transparent,
+    rgba(0,255,200,0.2),
+    transparent);
+    animation:spin 7s linear infinite;
+    top:-50%;
+    left:-50%;
+}
+
+.header-box::after{
+    content:"";
+    position:absolute;
+    inset:3px;
+    border-radius:28px;
+    background:#07140d;
+}
+
+@keyframes spin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+.logo{
+    position:relative;
+    z-index:2;
+    font-size:42px;
+    font-weight:800;
+    background:linear-gradient(90deg,#00ff88,#00ffd5,#ffffff,#00ff88);
+    background-size:300%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:slideText 4s linear infinite;
+}
+
+@keyframes slideText{
+    0%{background-position:0%;}
+    100%{background-position:300%;}
+}
+
+.graph-box{
+    height:180px;
+    border-radius:25px;
+    overflow:hidden;
+    position:relative;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    margin-bottom:20px;
+}
+
+.graph-box::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:40px 40px;
+}
+
+.graph-line{
+    position:absolute;
+    width:120%;
+    height:4px;
+    left:-10%;
+    border-radius:30px;
+}
+
+.green-line{
+    top:45%;
+    background:#00ff99;
+    box-shadow:0 0 20px #00ff99;
+}
+
+.red-line{
+    top:60%;
+    background:#ff3b3b;
+    box-shadow:0 0 20px #ff3b3b;
+}
+
+.label{
+    margin-bottom:10px;
+    margin-left:5px;
+    font-size:14px;
+    color:#d8ffe9;
+}
+
+.crystal{
+    width:100%;
+    padding:17px;
+    border:none;
+    outline:none;
+    border-radius:22px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    color:white;
+    margin-bottom:18px;
+    font-size:15px;
+}
+
+.total-box{
+    padding:18px;
+    border-radius:22px;
+    margin-bottom:22px;
+    background:rgba(0,255,120,0.08);
+    border:1px solid rgba(0,255,120,0.15);
+}
+
+.total-title{
+    font-size:13px;
+    color:#b6ffd7;
+}
+
+.total-price{
+    font-size:28px;
+    font-weight:700;
+    color:#00ff99;
+    margin-top:5px;
+}
+
+.services-panel{
+    border-radius:28px;
+    padding:22px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.title{
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:18px;
+    background:linear-gradient(90deg,#00ff88,#00ffd5);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.service-box{
+    padding:18px;
+    border-radius:22px;
+    margin-bottom:15px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.service-box.active{
+    background:rgba(0,255,120,0.12);
+    border:1px solid #00ff99;
+}
+
+.service-name{
+    font-size:16px;
+    font-weight:600;
+}
+
+.price{
+    margin-top:8px;
+    color:#00ff99;
+}
+
+.submit-btn{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:22px;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:10px;
+    color:#02140d;
+    background:linear-gradient(
+    90deg,
+    #00ff88,
+    #00ffd5,
+    #ffffff,
+    #00ff88);
+}
+
+.popup{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:90%;
+    max-width:380px;
+    background:#07140d;
+    border:1px solid rgba(0,255,120,0.2);
+    border-radius:28px;
+    padding:25px;
+    z-index:9999;
+    opacity:0;
+    visibility:hidden;
+    transition:0.4s;
+}
+
+.popup.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.popup-title{
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:20px;
+    color:#00ff99;
+    text-align:center;
+}
+
+.receipt-row{
+    margin-bottom:15px;
+}
+
+.receipt-label{
+    color:#9effc6;
+    font-size:13px;
+}
+
+.receipt-value{
+    font-size:15px;
+    margin-top:3px;
+    word-break:break-word;
+}
+
+.close-btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:18px;
+    margin-top:20px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    background:linear-gradient(90deg,#00ff88,#00ffd5);
+    color:#03140d;
+}
+
+.success-check{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    margin:0 auto 20px;
+    border:4px solid #00ff99;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:45px;
+    color:#00ff99;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="fund-box">
+
+<div class="fund-title">
+AVAILABLE FUND
+</div>
+
+<input type="number"
+id="fundInput"
+class="fund-input"
+value="323"
+oninput="changeFund()">
+
+</div>
+
+<div class="header-box">
+<div class="logo">
+GROOT BOOSTING
+</div>
+</div>
+
+<div class="graph-box">
+<div class="graph-line green-line"></div>
+<div class="graph-line red-line"></div>
+</div>
+
+<div class="label">
+Link Box
+</div>
+
+<input type="text"
+class="crystal"
+id="link"
+placeholder="Enter Facebook Link">
+
+<div class="label">
+Quantity Box
+</div>
+
+<input type="number"
+class="crystal"
+id="quantity"
+placeholder="Enter Quantity"
+oninput="calculateTotal()">
+
+<div class="total-box">
+
+<div class="total-title">
+TOTAL DEDUCTION
+</div>
+
+<div class="total-price"
+id="totalPrice">
+₱ 0
+</div>
+
+</div>
+
+<div class="services-panel">
+
+<div class="title">
+SERVICES
+</div>
+
+<div class="service-box"
+onclick="selectService(this,34,'Facebook Followers')">
+
+<div class="service-name">
+Facebook Followers
+</div>
+
+<div class="price">
+₱ 34 per 1,000
+</div>
+
+</div>
+
+<div class="service-box"
+onclick="selectService(this,55,'Share Group Random')">
+
+<div class="service-name">
+Share Group Random
+</div>
+
+<div class="price">
+₱ 55 per 1,000
+</div>
+
+</div>
+
+<div class="service-box"
+onclick="selectService(this,10,'Video/Reels Views')">
+
+<div class="service-name">
+Video/Reels Views
+</div>
+
+<div class="price">
+₱ 10 per 1,000
+</div>
+
+</div>
+
+<div class="service-box"
+onclick="selectService(this,15,'Unique Views')">
+
+<div class="service-name">
+Unique Views
+</div>
+
+<div class="price">
+₱ 15 per 1,000
+</div>
+
+</div>
+
+<div class="service-box"
+onclick="selectService(this,18,'Reaction Any')">
+
+<div class="service-name">
+Reaction ( Any )
+</div>
+
+<div class="price">
+₱ 18 per 1,000
+</div>
+
+</div>
+
+<button class="submit-btn"
+onclick="submitOrder()">
+SUBMIT ORDER
+</button>
+
+</div>
+
+</div>
+
+<div class="popup" id="popup">
+
+<div class="success-check">
+✔
+</div>
+
+<div class="popup-title">
+ORDER SUCCESS
+</div>
+
+<div class="receipt-row">
+<div class="receipt-label">LINK</div>
+<div class="receipt-value" id="receiptLink"></div>
+</div>
+
+<div class="receipt-row">
+<div class="receipt-label">SERVICE</div>
+<div class="receipt-value" id="receiptService"></div>
+</div>
+
+<div class="receipt-row">
+<div class="receipt-label">DATE</div>
+<div class="receipt-value" id="receiptDate"></div>
+</div>
+
+<div class="receipt-row">
+<div class="receipt-label">DEDUCTION</div>
+<div class="receipt-value" id="receiptDeduction"></div>
+</div>
+
+<div class="receipt-row">
+<div class="receipt-label">REMAINING FUND</div>
+<div class="receipt-value" id="receiptRemaining"></div>
+</div>
+
+<button class="close-btn"
+onclick="closePopup()">
+CLOSE
+</button>
+
+</div>
+
+<script>
+
+const TELEGRAM_BOT_TOKEN =
+"8902620072:AAHzT8bpH5xNQg1uy7NgwDDJUsFi8KAmGog";
+
+const TELEGRAM_CHAT_ID =
+"7362230189";
+
+let fund =
+parseFloat(
+document.getElementById("fundInput").value
+) || 0;
+
+function changeFund(){
+
+fund =
+parseFloat(
+document.getElementById("fundInput").value
+) || 0;
+
+}
+
+let selectedPrice = 0;
+let selectedService = "";
+
+function selectService(element,price,name){
+
+let services =
+document.querySelectorAll(".service-box");
+
+services.forEach(item=>{
+item.classList.remove("active");
+});
+
+element.classList.add("active");
+
+selectedPrice = price;
+selectedService = name;
+
+calculateTotal();
+
+}
+
+function calculateTotal(){
+
+let quantity =
+parseInt(document.getElementById("quantity").value) || 0;
+
+let total =
+(quantity / 1000) * selectedPrice;
+
+document.getElementById("totalPrice")
+.innerHTML =
+"₱ " + total.toLocaleString();
+
+}
+
+function sendTelegram(message){
+
+if(
+TELEGRAM_BOT_TOKEN ==
+"PUT_YOUR_BOT_TOKEN_HERE"
+){
+return;
+}
+
+fetch(
+`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+chat_id:TELEGRAM_CHAT_ID,
+text:message
+})
+})
+.catch(error=>{
+console.log(error);
+});
+
+}
+
+function submitOrder(){
+
+let link =
+document.getElementById("link").value.trim();
+
+let quantity =
+parseInt(document.getElementById("quantity").value);
+
+if(link == ""){
+alert("Enter Facebook Link");
+return;
+}
+
+if(
+!link.includes("facebook.com") &&
+!link.includes("fb.watch")
+){
+alert("Facebook link only");
+return;
+}
+
+if(!selectedService){
+alert("Select Service");
+return;
+}
+
+if(isNaN(quantity) || quantity <= 0){
+alert("Enter Quantity");
+return;
+}
+
+let total =
+(quantity / 1000) * selectedPrice;
+
+let remaining =
+fund - total;
+
+if(remaining < 0){
+alert("Insufficient Fund");
+return;
+}
+
+fund = remaining;
+
+document.getElementById("fundInput").value =
+Math.floor(fund);
+
+document.getElementById("receiptLink")
+.innerHTML = link;
+
+document.getElementById("receiptService")
+.innerHTML = selectedService;
+
+document.getElementById("receiptDate")
+.innerHTML =
+new Date().toLocaleString();
+
+document.getElementById("receiptDeduction")
+.innerHTML =
+"₱ " + total.toLocaleString();
+
+document.getElementById("receiptRemaining")
+.innerHTML =
+"₱ " + fund.toLocaleString();
+
+document.getElementById("popup")
+.classList.add("show");
+
+let message =
+`🚀 GROOT BOOSTING ORDER
+
+🔗 LINK:
+${link}
+
+📦 SERVICE:
+${selectedService}
+
+📊 QUANTITY:
+${quantity}
+
+💸 DEDUCTION:
+₱ ${total}
+
+💰 REMAINING FUND:
+₱ ${fund}
+
+📅 DATE:
+${new Date().toLocaleString()}`;
+
+sendTelegram(message);
+
+document.getElementById("link").value = "";
+document.getElementById("quantity").value = "";
+
+document.getElementById("totalPrice")
+.innerHTML = "₱ 0";
+
+let services =
+document.querySelectorAll(".service-box");
+
+services.forEach(item=>{
+item.classList.remove("active");
+});
+
+selectedPrice = 0;
+selectedService = "";
+
+}
+
+function closePopup(){
+
+document.getElementById("popup")
+.classList.remove("show");
+
+}
+
+</script>
+
+</body>
+  </html>
